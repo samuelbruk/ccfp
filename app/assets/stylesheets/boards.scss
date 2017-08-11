@@ -1,0 +1,47 @@
+// Place all the styles related to the boards controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//////// Boards Index ///////////////
+.index.boards {
+ display: flex;
+ flex-wrap: wrap;
+}
+
+.index.boards .board {
+  width: 250px;
+  height: 100px;
+  background-color: lavender;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.index.boards .board a {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: grey;
+  padding: 10px;
+}
+
+.index.boards .add.board {
+}
+
+.index.boards .add.board a {
+  color: grey;
+  justify-content: center;
+  align-items: center;
+}
+
+.index.boards a:hover {
+  background-color: hsla(0, 100%, 90%, 0.2);
+}
+//////// Boards Index ///////////////
+
+//////// Boards Show ////////////////
+
+
+//////// Boards Show ////////////////

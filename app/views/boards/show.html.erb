@@ -1,0 +1,17 @@
+<div class="show boards">
+  <span class="board-name">
+    <%= @board.name %>
+    <%= link_to "Edit Board", edit_board_path(@board) %>
+    <%= link_to "Delete Board", board_path(@board), method: :delete, class: "board-delete-link" %>
+    <!--TODO add a link to edit board name  -->
+  </span>
+  <% @lists.each do |list| %>
+    <div class="list">
+      <span class="list-name">
+        <%= link_to list.name, list_path(list), class: "list-link"  %>
+        <%= link_to "Delete List", list_path(list), method: :delete, class: "list-delete-link"%>
+      </span>
+    </div>
+  <% end %>
+  <%= link_to('Add List', new_board_list_path(@board, @list)) %>
+</div>
