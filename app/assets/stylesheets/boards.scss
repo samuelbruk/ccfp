@@ -50,7 +50,7 @@ a {
   text-decoration: none;
   color: black;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 25px;
 }
 
 .show-boards {
@@ -61,12 +61,17 @@ a {
 
 .show-boards .list {
   width: 250px;
-  height: 100px;
   background-color: lavender;
   border-radius: 5px;
   margin: 10px 10px 10px 0px;
   padding: 10px;
   color: black;
+  //display: flex;
+}
+
+.show-boards .list .list-name .list-link {
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .show-boards .new-link {
@@ -83,5 +88,9 @@ a {
   justify-content: center;
   align-items: center;
 }
-
 //////// Show Boards -- End ////////////////
+
+//////// Show Boards-Lists-Cards ////////////////////////
+// '.list' is styled above as '.show-boards .list'
+
+//////// Show Boards-Lists-Cards -- End ////////////////

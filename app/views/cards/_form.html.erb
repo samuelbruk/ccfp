@@ -1,0 +1,4 @@
+<%= form_for [@list, @card] do |f| %>
+  <%= f.text_field(:name, placeholder: 'Card Name', class: 'form-control') %>
+  <%= f.submit('Submit', class: 'btn btn-default') %>
+<% end %>

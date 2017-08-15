@@ -14,10 +14,16 @@ List.destroy_all
   Board.create(name: "#{food}")
 end
 
-10.times do
+100.times do
   ingredients = Faker::Food.ingredient
   List.create(name: "#{ingredients}", board_id: Board.all.sample.id)
 end
 
+100.times do
+  ingredients = Faker::Food.ingredient
+  Card.create(name: "#{ingredients}", list_id: List.all.sample.id)
+end
+
 puts Cowsay.say("Created #{Board.all.count} Boards", :cow)
 puts Cowsay.say("Created #{List.all.count} Lists", :cow)
+puts Cowsay.say("Created #{Card.all.count} Cards", :cow)
