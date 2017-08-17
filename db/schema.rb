@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170815001647) do
+ActiveRecord::Schema.define(version: 20170817014327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,37 @@ ActiveRecord::Schema.define(version: 20170815001647) do
     t.index ["list_id"], name: "index_cards_on_list_id"
   end
 
+  create_table "cards_labels", id: false, force: :cascade do |t|
+    t.bigint "card_id"
+    t.bigint "label_id"
+    t.index ["card_id"], name: "index_cards_labels_on_card_id"
+    t.index ["label_id"], name: "index_cards_labels_on_label_id"
+  end
+
+  create_table "checklists", force: :cascade do |t|
+    t.text "content"
+    t.boolean "is_checked"
+    t.bigint "card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_checklists_on_card_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_comments_on_card_id"
+  end
+
+  create_table "labels", force: :cascade do |t|
+    t.string "name"
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "lists", force: :cascade do |t|
     t.string "name"
     t.bigint "board_id"
@@ -39,5 +70,7 @@ ActiveRecord::Schema.define(version: 20170815001647) do
   end
 
   add_foreign_key "cards", "lists"
+  add_foreign_key "checklists", "cards"
+  add_foreign_key "comments", "cards"
   add_foreign_key "lists", "boards"
 end
