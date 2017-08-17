@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'boards#index'
+  root 'welcome#index'
 
   resources :boards, shallow: true do
     resources :lists, except: :index
