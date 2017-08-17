@@ -1,9 +1,10 @@
 class ListsController < ApplicationController
+  before_action :find_list, only: [:show, :destroy]
+
   # def index
   # end
 
   def show
-    @list = find_list
   end
 
   def new
@@ -25,7 +26,6 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    @list = find_list
     @board = @list.board
     if @list.destroy
       flash[:notice] = 'List deleted!'
@@ -38,7 +38,7 @@ class ListsController < ApplicationController
 
   private
   def find_list
-    List.find(params[:id])
+    @list = List.find(params[:id])
   end
 
   def list_params
