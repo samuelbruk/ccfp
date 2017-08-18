@@ -5,8 +5,7 @@ class CommentsController < ApplicationController
     @comment = @card.comments.build(comment_params)
 
     if @comment.save
-      flash[:notice] = "Comment made!"
-      redirect_to ""
+      redirect_to "", notice: "Comment made!"
     else
       flash[:error] = "Comment could not be made!"
       redirect_to ""

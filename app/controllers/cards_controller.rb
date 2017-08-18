@@ -9,8 +9,7 @@ class CardsController < ApplicationController
     @card = @list.cards.build(card_params)
 
     if @card.save
-      flash[:notice] = 'New List Created!'
-      redirect_to board_path(@list.board)
+      redirect_to board_path(@list.board), notice: "New List Created!"
     else
       flash[:error] = 'Failed to create a list!'
       redirect_to board_path(@list.board)
@@ -20,8 +19,7 @@ class CardsController < ApplicationController
   def destroy
     @card = find_card
     if @card.destroy
-      flash[:notice] = 'Card deleted!'
-      redirect_to board_path(@card.list.board)
+      redirect_to board_path(@card.list.board), notice: "Card deleted!"
     else
       flash[:error] = 'Card could not be deleted!'
       redirect_to board_path(@card.list.board)

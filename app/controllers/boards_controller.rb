@@ -17,8 +17,7 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
     if @board.save
-      flash[:notice] = 'New board created!'
-      redirect_to boards_path
+      redirect_to boards_path, notice: "New board created!"
     else
       flash[:error] = 'Failed to create a board!'
       render :new
@@ -32,8 +31,7 @@ class BoardsController < ApplicationController
   def update
     @board = find_board
     if @board.update board_params
-      flash[:notice] = 'Board edited!'
-      redirect_to board_path(@board)
+      redirect_to board_path(@board), notice: 'Board edited!'
     else
       flash[:error] = 'Board could not be edited'
       render :edit
@@ -46,8 +44,7 @@ class BoardsController < ApplicationController
   def destroy
     @board = find_board
     if @board.destroy
-      flash[:notice] = "Board deleted!"
-      redirect_to boards_path
+      redirect_to boards_path, notice: "Board deleted!"
     else
       flash[:error] = "Board could not be deleted!"
       redirect_to boards_path
