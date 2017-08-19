@@ -1,5 +1,5 @@
 <span class="board-name">
-  <%= link_to @board.name, edit_board_path(@board), class: "board-name" %>
+  <%= link_to @board.name, edit_board_path(@board), remote: true, class: "board-name" %>
   <%= link_to "Delete", board_path(@board), method: :delete, class: "board-delete-link" %>
   <!--TODO add a link to edit board name  -->
 </span>

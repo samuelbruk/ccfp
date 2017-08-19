@@ -1,6 +1,8 @@
 class BoardsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @boards = Board.order(created_at: :desc)
+    @boards = current_user.boards.order(created_at: :desc)
   end
 
   def show
