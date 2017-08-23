@@ -15,4 +15,10 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to root_path, notice: "Signed out!"
   end
+
+  # private
+  # Implement 'form_for :session' on the sign-in page first
+  # def session_params
+  #   params.require(:session).permit(:email, :password)
+  # end
 end
