@@ -14,7 +14,7 @@
       <div class="cards">
         <% list.cards.each do |card| %>
           <div class="card">
-            <%= link_to card.name, card_path(card), class: "card-link" %>
+            <%= link_to card.name, card_path(card), class: "card-link", remote: true %>
             <%= link_to "Delete", card_path(card), method: :delete, class: "card-delete-link" %>
           </div>
         <% end %>
@@ -27,4 +27,38 @@
   <div class="new-link">
     <%= link_to('Add List', new_board_list_path(@board, @list), remote: true, class: "new-link") %>
   </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <!-- <h4 class="modal-title" ></h4> -->
+          <p id="myModalLabel" class="card-name"></p>
+          <span id="card-description" class="card-description"></span>
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-main-col">
+            <p>Main column</p>
+            <div class="modal-checklist">
+              modal-checklist
+            </div>
+            <div class="modal-comment">
+              modal-comment
+            </div>
+          </div>
+          <div class="modal-side-bar">
+            modal-side-bar
+          </div>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <!-- Modal End-->
 </div>

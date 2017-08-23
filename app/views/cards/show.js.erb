@@ -1,0 +1,6 @@
+$('#card-description').html('<%= j @card.description %><br /><%= j link_to "Edit Description", edit_card_path(@card), remote: true %>');
+
+
+
+$('#myModalLabel').html('<%= j @card.name %>');
+$('#myModal').modal('show');

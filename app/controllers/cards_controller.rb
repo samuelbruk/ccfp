@@ -1,4 +1,12 @@
 class CardsController < ApplicationController
+  before_action :find_card, only: [:show, :edit, :destroy]
+
+  def show
+    respond_to do |format|
+      format.js { render :show}
+    end
+  end
+
   def new
     @list = List.find(params[:list_id])
     @card = Card.new
@@ -16,8 +24,20 @@ class CardsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    respond_to do |format|
+      if @card.update card_params
+        format.js { render :card_update_success }
+      else
+        format.js { render :card_update_fail}
+      end
+    end
+  end
+
   def destroy
-    @card = find_card
     if @card.destroy
       redirect_to board_path(@card.list.board), notice: "Card deleted!"
     else
@@ -28,10 +48,10 @@ class CardsController < ApplicationController
 
   private
   def find_card
-    Card.find(params[:id])
+    @card = Card.find(params[:id])
   end
 
   def card_params
-    params.require(:card).permit(:name)
+    params.require(:card).permit(:name, :description, :dead_line)
   end
 end
