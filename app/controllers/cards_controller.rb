@@ -1,7 +1,10 @@
 class CardsController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_card, only: [:show, :edit, :destroy]
 
   def show
+    @checklists = @card.checklists
+    @checklist = Checklist.new
     respond_to do |format|
       format.js { render :show}
     end

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root 'welcome#index'
+  post '/checklists/:id/toggle', to: 'checklists#toggle'
 
   resources :boards, shallow: true do
     resources :lists, except: :index
@@ -8,6 +9,10 @@ Rails.application.routes.draw do
 
   resources :lists, only: [], shallow: true do
     resources :cards, except: :index
+  end
+
+  resources :cards, only: [], shallow: true do
+    resources :checklists, except: :index
   end
 
   resources :users, only: :create

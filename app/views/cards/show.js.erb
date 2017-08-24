@@ -1,6 +1,20 @@
-$('#card-description').html('<%= j @card.description %><br /><%= j link_to "Edit Description", edit_card_path(@card), remote: true %>');
+$('#card-description-edit').html('<%= j @card.description %><br /><%= j link_to "Edit Description", edit_card_path(@card), remote: true %>');
+$('#card-name').html('<%= j @card.name %>');
 
+$('#modal-checklist .modal-checklist-list').html('<% @checklists.each do |ch| %><% id = ch.id %> <div class="funkyradio"><div class="funkyradio-primary"><input type="checkbox" name="checkbox" id="checkbox<%= id %>" <% if (!ch.is_checked) %>checked<% end %>/><label for="checkbox<%= id %>" data-cid="<%= id %>"> <%= ch.content %> </label></div><% end %>');
 
+$('#modal-checklist .modal-checklist-new').html('<%= link_to "Add Checklist", new_card_checklist_path(@card, @checklist), remote: true, class: "add-link-checklist" %>')
 
-$('#myModalLabel').html('<%= j @card.name %>');
 $('#myModal').modal('show');
+
+$('#modal-checklist').on('click', event => {
+  const {target} = event;
+  //alert($(currentTarget).data('cid'));
+  if(target.nodeName == "LABEL") {
+    const cid = parseInt($(target).data('cid'));
+      $.ajax({
+        type: "POST",
+        url: `/checklists/${cid}/toggle`,
+      });
+    }
+  })
