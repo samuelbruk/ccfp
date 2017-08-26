@@ -17,6 +17,10 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+div {
+  overflow: hidden;
+}
+
 .btn {
   font-size: inherit;
 }

@@ -5,9 +5,11 @@ $('#modal-checklist .modal-checklist-list').html('<% @checklists.each do |ch| %>
 
 $('#modal-checklist .modal-checklist-new').html('<%= link_to "Add Checklist", new_card_checklist_path(@card, @checklist), remote: true, class: "add-link-checklist" %>');
 
-$('#modal-comment .modal-comment-new').html('<%= form_for [@card, @comment], remote: true do |f| %><%= f.text_field(:content, placeholder: 'Your comment here', class: 'form-control') %><%= f.submit('Submit', class: 'btn btn-success') %><% end %>');
+$('#modal-comment .modal-comment-new').html('<%= form_for [@card, @comment], remote: true do |f| %><%= f.text_field(:content, placeholder: 'Your comment here', class: 'form-control') %><%= f.submit('Save', class: 'btn btn-success') %><% end %>');
 
-$('#modal-comment .modal-comment-list').html('<% @card.comments.each do |comment| %><div><span class="content"><%= comment.content%></span><span class="data"><%= comment.created_at %></span></div><% end %>')
+$('#modal-comment .modal-comment-list').html('<% @card.comments.each do |comment| %><div><span class="content"><%= comment.content%></span><br/><span class="date"><%= comment.created_at %></span></div><% end %>');
+
+$('#modal-side-bar span').html('<div class="modal-side-bar-add"><%= link_to "Label", "#", class: "btn btn-default"%><%= link_to "Due Date", "#", class: "btn btn-default"%><%= link_to "Attachment", "#", class: "btn btn-default"%>');
 
 $('#myModal').modal('show');
 
