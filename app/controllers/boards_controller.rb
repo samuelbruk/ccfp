@@ -1,12 +1,11 @@
 class BoardsController < ApplicationController
   before_action :authenticate_user!
-
+  before_action :find_board, only: [:show, :edit, :update, :destroy]
   def index
     @boards = current_user.boards.order(created_at: :desc)
   end
 
   def show
-    @board = find_board
     @lists = @board.lists.order(created_at: :desc)
     @list = List.new
     @card = Card.new
@@ -17,7 +16,8 @@ class BoardsController < ApplicationController
   end
 
   def create
-    @board = Board.new(board_params)
+    @board = current_user.boards.new(board_params)
+
     if @board.save
       redirect_to boards_path, notice: "New board created!"
     else
@@ -27,11 +27,9 @@ class BoardsController < ApplicationController
   end
 
   def edit
-    @board = find_board
   end
 
   def update
-    @board = find_board
     if @board.update board_params
       redirect_to board_path(@board), notice: 'Board edited!'
     else
@@ -44,7 +42,6 @@ class BoardsController < ApplicationController
   end
 
   def destroy
-    @board = find_board
     if @board.destroy
       redirect_to boards_path, notice: "Board deleted!"
     else
@@ -55,7 +52,7 @@ class BoardsController < ApplicationController
 
   private
   def find_board
-    Board.find(params[:id])
+    @board = Board.find(params[:id])
   end
 
   def board_params

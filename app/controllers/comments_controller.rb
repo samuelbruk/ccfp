@@ -1,19 +1,20 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_comment, only: [:destroy]
+
   def create
     @card = Card.find(params[:card_id])
     @comment = @card.comments.build(comment_params)
 
     if @comment.save
-      redirect_to "", notice: "Comment made!"
-    else
-      flash[:error] = "Comment could not be made!"
-      redirect_to ""
+      respond_to do |format|
+        format.js { render :create}
+      end
     end
+  end
 
-    def destroy
-      @comment.destroy
-    end
+  def destroy
+    @comment.destroy
   end
 
   private

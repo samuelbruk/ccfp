@@ -1,0 +1,3 @@
+$('form#new_comment').trigger('reset');
+
+$('#modal-comment .modal-comment-list').prepend('<div><span class="content"><%= @comment.content%></span><span class="data"><%= @comment.created_at %></span></div>');

@@ -5,6 +5,7 @@ class CardsController < ApplicationController
   def show
     @checklists = @card.checklists
     @checklist = Checklist.new
+    @comment = Comment.new
     respond_to do |format|
       format.js { render :show}
     end

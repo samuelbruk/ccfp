@@ -10,31 +10,41 @@ a {
 .index-boards {
  display: flex;
  flex-wrap: wrap;
+ max-width: 1000px;
+ margin: 0 auto;
+ margin-top: 20px;
 }
 
 .index-boards .board {
-  width: 250px;
-  height: 100px;
-  background-color: lavender;
-  border-radius: 5px;
-  margin-right: 10px;
+  //max-width: 200px;
+
+  //margin-right: 10px;
   margin-bottom: 10px;
   color: black;
 }
 
-.index-boards .board a {
+.index-boards .board .board-wrapper {
+  border-radius: 5px;
+  //padding-left: 10px;
+  background-color: lavender;
+  min-height: 85px;
+}
+
+.index-boards .board .board-wrapper a {
+  font-weight: bold;
   display: flex;
   width: 100%;
-  height: 100%;
+  min-height: 85px;
   text-decoration: none;
   color: grey;
   padding: 10px;
 }
 
-.index-boards .add-board {
+.index-boards .add-board .board-wrapper{
+  //text-align: center;
 }
 
-.index-boards .add-board a {
+.index-boards .add-board .board-wrapper a {
   color: grey;
   justify-content: center;
   align-items: center;
@@ -43,6 +53,14 @@ a {
 .index-boards a:hover {
   background-color: hsla(0, 100%, 90%, 0.2);
 }
+
+.board-form.form-control {
+  margin-bottom: 5px;
+}
+
+.board-form.form-control input {
+  padding-top: 10px;
+}
 //////// Index Boards -- End ///////////////
 
 //////// Show Boards ////////////////
@@ -50,27 +68,27 @@ a {
   text-decoration: none;
   color: black;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 13px;
 }
 
 .show-boards {
- display: flex;
- flex-wrap: wrap;
-
+  display: inline-flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
 .show-boards .list {
-  width: 250px;
+  width: 230px;
   background-color: lavender;
   border-radius: 5px;
   margin: 10px 10px 10px 0px;
-  padding: 10px;
+  padding: 5px;
   color: black;
   //display: flex;
 }
 
 .show-boards .list .list-name .list-link {
-  font-size: 18px;
+  font-size: 12px;
   font-weight: bold;
 }
 
@@ -92,9 +110,46 @@ a {
 
 //////// Show Boards-Lists-Cards ////////////////////////
 // '.list' is styled above as '.show-boards .list'
+span.board-name {
+    display: block;
+}
 
+.show-boards .list .cards .card {
+  background-color: white;
+  overflow: hidden;
+  border-radius: 2px;
+  padding: 0px 4px;
+  margin-bottom: 5px;
+}
+
+.show-boards .list .cards .card .card-link {
+  display: inline-block;
+  float: left;
+  clear: left;
+}
+.show-boards .list .cards .card .card-delete-link {
+  display: inline-block;
+  float: right;
+}
+
+.show-boards .list .cards .card .card-summary {
+  clear: both;
+}
+
+.show-boards .list .cards .new-link-card {
+  clear: both;
+}
 //////// Show Boards-Lists-Cards -- End /////////////////
 
+/////////////////// Comments /////////////////////////////
+form#new_comment {
+    margin-top: 10px;
+}
+
+#new_comment input.btn.btn-success {
+    margin-top: 5px;
+}
+//////////////// Comments -- End ////////////////////////
 /////////////////// Checklists //////////////////////////
 
 //// Custom /////

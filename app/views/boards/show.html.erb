@@ -1,6 +1,8 @@
 <span class="board-name">
   <%= link_to @board.name, edit_board_path(@board), remote: true, class: "board-name" %>
-  <%= link_to "Delete", board_path(@board), method: :delete, class: "board-delete-link" %>
+  <%= link_to board_path(@board), method: :delete, class: "board-delete-link" do %>
+        <span class="glyphicon glyphicon-trash"></span>
+  <% end %>
   <!--TODO add a link to edit board name  -->
 </span>
 <!-- Using 'showw' instead of 'show', 'show' is reserved -->
@@ -9,13 +11,25 @@
     <div class="list">
       <div class="list-name ">
         <%= link_to list.name, edit_list_path(list), remote: true, class: "list-link list-#{list.id}"  %>
-        <%= link_to "Delete", list_path(list), method: :delete, class: "list-delete-link"%>
+        <%= link_to list_path(list), method: :delete, class: "list-delete-link" do %>
+              <span class="glyphicon glyphicon-trash"></span>
+        <% end %>
       </div>
       <div class="cards">
         <% list.cards.each do |card| %>
           <div class="card">
             <%= link_to card.name, card_path(card), class: "card-link", remote: true %>
-            <%= link_to "Delete", card_path(card), method: :delete, class: "card-delete-link" %>
+            <%= link_to card_path(card), method: :delete, class: "card-delete-link" do %>
+                  <span class="glyphicon glyphicon-trash"></span>
+            <% end %>
+            <div class="card-summary">
+              <span><%= card.dead_line %></span>
+              <span><%= c = card.checklists.count
+                        if c!= 0
+                          c
+                        end
+                %></span>
+            </div>
           </div>
         <% end %>
         <div class="new-link-card">
@@ -48,11 +62,17 @@
                 modal-checklist
               </div>
               <div class="modal-checklist-new">
-                
+
               </div>
             </div>
             <div id="modal-comment" class="modal-comment">
-              modal-comment
+              <div class="modal-comment-new">
+                
+              </div>
+              <div class="modal-comment-list">
+                modal-comment
+              </div>
+
             </div>
           </div>
           <div id="modal-side-bar" class="modal-side-bar">

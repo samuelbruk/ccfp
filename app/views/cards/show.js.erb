@@ -1,9 +1,13 @@
 $('#card-description-edit').html('<%= j @card.description %><br /><%= j link_to "Edit Description", edit_card_path(@card), remote: true %>');
 $('#card-name').html('<%= j @card.name %>');
 
-$('#modal-checklist .modal-checklist-list').html('<% @checklists.each do |ch| %><% id = ch.id %> <div class="funkyradio"><div class="funkyradio-primary"><input type="checkbox" name="checkbox" id="checkbox<%= id %>" <% if (!ch.is_checked) %>checked<% end %>/><label for="checkbox<%= id %>" data-cid="<%= id %>"> <%= ch.content %> </label></div><% end %>');
+$('#modal-checklist .modal-checklist-list').html('<% @checklists.each do |ch| %><% id = ch.id %> <div class="funkyradio"><div class="funkyradio-primary"><input type="checkbox" name="checkbox" id="checkbox<%= id %>" <% if (ch.is_checked) %>checked<% end %>/><label for="checkbox<%= id %>" data-cid="<%= id %>"> <%= ch.content %> </label></div><% end %>');
 
-$('#modal-checklist .modal-checklist-new').html('<%= link_to "Add Checklist", new_card_checklist_path(@card, @checklist), remote: true, class: "add-link-checklist" %>')
+$('#modal-checklist .modal-checklist-new').html('<%= link_to "Add Checklist", new_card_checklist_path(@card, @checklist), remote: true, class: "add-link-checklist" %>');
+
+$('#modal-comment .modal-comment-new').html('<%= form_for [@card, @comment], remote: true do |f| %><%= f.text_field(:content, placeholder: 'Your comment here', class: 'form-control') %><%= f.submit('Submit', class: 'btn btn-success') %><% end %>');
+
+$('#modal-comment .modal-comment-list').html('<% @card.comments.each do |comment| %><div><span class="content"><%= comment.content%></span><span class="data"><%= comment.created_at %></span></div><% end %>')
 
 $('#myModal').modal('show');
 
