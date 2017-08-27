@@ -17,12 +17,20 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+a {
+  color: #4d4d4d
+}
+
 div {
   overflow: hidden;
 }
 
 .btn {
   font-size: inherit;
+}
+
+input.btn.btn-default, input.btn.btn-success {
+    margin-top: 5px;
 }
 
 .nav {
@@ -77,7 +85,7 @@ body {
   background-color: #fcfcfc;
   padding: 0px;
   margin: 0px;
-  font-size: 12px;
+  //font-size: 12px;
 }
 
 .centr-div {

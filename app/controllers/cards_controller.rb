@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_card, only: [:show, :edit, :destroy]
+  before_action :find_card, only: [:show, :edit, :update, :destroy]
 
   def show
     @checklists = @card.checklists
@@ -32,10 +32,12 @@ class CardsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @card.update card_params
+    if @card.update card_params
+      respond_to do |format|
         format.js { render :card_update_success }
-      else
+      end
+    else
+      respond_to do |format|
         format.js { render :card_update_fail}
       end
     end

@@ -2,16 +2,3 @@ $('#modal-checklist .modal-checklist-new').html($('.add-link-checklist').show())
 
 
 $('#modal-checklist .modal-checklist-list').append('<% id = @checklist.id %> <div class="funkyradio"><div class="funkyradio-primary"><input type="checkbox" name="checkbox" id="checkbox<%= id %>" /><label for="checkbox<%= id %>" data-cid="<%= id %>"> <%= @checklist.content %> </label></div>');
-
-// $('#myModal').modal('show');
-//
-// $('#modal-checklist label').on('click', event => {
-//   const {currentTarget} = event;
-//   //alert($(currentTarget).data('cid'));
-//   const cid = parseInt($(currentTarget).data('cid'));
-//
-//     $.ajax({
-//       type: "POST",
-//       url: `/checklists/${cid}/toggle`,
-//     });
-//   })

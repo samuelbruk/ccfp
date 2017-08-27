@@ -17,7 +17,6 @@ a {
 
 .index-boards .board {
   //max-width: 200px;
-
   //margin-right: 10px;
   margin-bottom: 10px;
   color: black;
@@ -68,7 +67,7 @@ a {
   text-decoration: none;
   color: black;
   font-weight: bold;
-  font-size: 13px;
+  //font-size: 13px;
 }
 
 .show-boards {
@@ -78,17 +77,17 @@ a {
 }
 
 .show-boards .list {
-  width: 230px;
+  width: 275px;
   background-color: lavender;
-  border-radius: 5px;
+  border-radius: 3px;
   margin: 10px 10px 10px 0px;
   padding: 5px;
   color: black;
-  //display: flex;
+  height: fit-content;
 }
 
 .show-boards .list .list-name .list-link {
-  font-size: 12px;
+  //font-size: 12px;
   font-weight: bold;
 }
 
@@ -142,21 +141,73 @@ span.board-name {
 //////// Show Boards-Lists-Cards -- End /////////////////
 
 /////////////////// Modal ///////////////////////////////
-#modal-content {
-  border-radius: 6px 6px 0 0;
-  overflow: hidden;
+.indent-content {
+  margin-left: 18px;
+}
+
+.modal-dialog {
+  width: 700px !important;
+}
+
+.modal.in .modal-dialog {
+  border-radius: 6px;
+}
+
+.modal-module-title {
+  font-family: "Ubuntu", sans-serif;
+  letter-spacing: 0.5px;
+  //font-size: 13px;
+  font-weight: 500;
+  color: #4d4d4d;
+  display: block;
+  margin: 15px 0 10px 0;
+}
+
+.modal-module-title-fai, .modal-module-title-fai {
+  margin-right: 10px
+}
+
+.modal-module-title-fai {
+
+}
+
+#card-name {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 16px;
+  font-weight: bolder;
+  letter-spacing: 0.3px;
+  display: block;
+}
+
+.modal-body .card-description-title {
+  color: #7d7d7d;
+}
+
+.modal-body .card-description-edit a {
+  color: #7d7d7d;
+  text-decoration: underline;
+}
+
+.modal-body .card-description {
+  display: block;
+  color: #4d4d4d;
+}
+
+textarea#card_description {
+  max-width: 350px;
+  min-height: 70px;
   background-color: #edeff0;
 }
 
-#modal-content h6 {
-  font-size: bold;
-  font-family: "Ubuntu", sans-serif;
-  letter-spacing: 0.5px;
-  font-size: 12px;
+#modal-content {
+  border-radius: 6px 6px 6px 6px;
+  background-color: #edeff0;
 }
 
 .modal-header {
-  background-color: white;
+  //background-color: white;
+  padding: 15px 15px 6px 15px !important;
+  border-bottom: unset !important;
 }
 
 #modal-body {
@@ -167,7 +218,7 @@ span.board-name {
     padding: 0 10px 0 0;
 }
 
-#modal-side-bar a.btn.btn-default {
+#modal-side-bar .side-bar-btn {
   display: block;
   text-align: left;
   margin-bottom: 5px;
@@ -176,11 +227,6 @@ span.board-name {
 
 /////////////////// Comments /////////////////////////////
 form#new_comment {
-  margin-top: 10px;
-}
-
-#new_comment input.btn.btn-success {
-  margin-top: 5px;
 }
 
 .modal-comment-list {
@@ -207,6 +253,7 @@ form#new_comment {
     font-family: 'Ubuntu';
     font-weight: lighter;
     letter-spacing: 0.1px;
+    color: #4d4d4d;
 }
 
 //////////////// Comments -- End ////////////////////////
@@ -214,7 +261,7 @@ form#new_comment {
 
 //// Custom /////
 #modal-checklist label {
-  font-size: 10px;
+  font-size: 12px;
 }
 //// Custom -- End /////
 
@@ -276,6 +323,8 @@ form#new_comment {
 .funkyradio input[type="radio"]:checked ~ label,
 .funkyradio input[type="checkbox"]:checked ~ label {
   color: #777;
+  font-style: italic;
+  text-decoration: line-through;
 }
 
 .funkyradio input[type="radio"]:checked ~ label:before,
