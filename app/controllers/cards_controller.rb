@@ -1,11 +1,12 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_card, only: [:show, :edit, :update, :destroy]
+  before_action :find_card, only: [:show, :edit, :update, :destroy, :add_label, :add_due_date]
 
   def show
     @checklists = @card.checklists
     @checklist = Checklist.new
     @comment = Comment.new
+    @label = Label.new
     respond_to do |format|
       format.js { render :show}
     end
@@ -52,6 +53,24 @@ class CardsController < ApplicationController
     end
   end
 
+  def add_label #TODO refactor this to a more appropriate controller
+    #@card = Card.find(params[:id])
+    @names = label_param.split(/\s*,\s*/)
+    @names.each do |name|
+      @card.labels << Label.where(name: name.downcase).first_or_create!
+    end
+    respond_to do |format|
+      format.js { render :label_add_success }
+    end
+  end
+
+  def add_due_date
+    @card.update(dead_line: due_date_param)
+    respond_to do |format|
+      format.js { render :add_due_date_success }
+    end
+  end
+
   private
   def find_card
     @card = Card.find(params[:id])
@@ -59,5 +78,13 @@ class CardsController < ApplicationController
 
   def card_params
     params.require(:card).permit(:name, :description, :dead_line)
+  end
+
+  def label_param
+    params.require(:name)
+  end
+
+  def due_date_param
+    params.require(:due_date)
   end
 end

@@ -1,0 +1,5 @@
+<form class="add-label-form" action='<%= cards_add_label_path(@card) %>' method="post" data-remote="true">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+    <textarea rows="2" name="name" placeholder="lbl1, lbl2, ..." class="form-control" />
+  <button class="btn btn-success">Add</button>
+</form>

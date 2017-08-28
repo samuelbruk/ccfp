@@ -199,6 +199,32 @@ textarea#card_description {
   background-color: #edeff0;
 }
 
+.modal-labels {
+  margin-top: 6px;
+  max-width: 70%;
+}
+
+.modal-labels .labels-title {
+  color: #7d7d7d;
+  display: inline-block;
+}
+
+.modal-labels .label-list {
+  width: fit-content;
+}
+
+.modal-labels .label-list-label {
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  background-color: #eb5a46;
+  border-radius: 2px;
+  display: inline-block;
+  padding: 0 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
 #modal-content {
   border-radius: 6px 6px 6px 6px;
   background-color: #edeff0;
@@ -212,6 +238,7 @@ textarea#card_description {
 
 #modal-body {
     padding: 0;
+    overflow: hidden;
 }
 
 #modal-side-bar {
@@ -222,6 +249,26 @@ textarea#card_description {
   display: block;
   text-align: left;
   margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 12px
+}
+
+#modal-side-bar .side-bar-btn:hover {
+  background-color: #298fca;
+  color: white;
+}
+
+#modal-side-bar .side-bar-btn:active {
+  background-color: #0079bf;
+  color: white;
+}
+
+.add-label-form {
+    margin-bottom: 5px;
+}
+
+.add-label-form .form-control {
+    margin-bottom: 5px;
 }
 //////////////// Modal -- End///////////////////////////////
 
@@ -311,6 +358,12 @@ form#new_comment {
 .funkyradio input[type="radio"]:hover:not(:checked) ~ label,
 .funkyradio input[type="checkbox"]:hover:not(:checked) ~ label {
   color: #888;
+  background-color: #e2e4e6
+}
+
+.funkyradio input[type="radio"]:hover:checked ~ label,
+.funkyradio input[type="checkbox"]:hover:checked ~ label {
+  background-color: #e2e4e6
 }
 
 .funkyradio input[type="radio"]:hover:not(:checked) ~ label:before,

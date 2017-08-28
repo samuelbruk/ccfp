@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   post '/checklists/:id/toggle', to: 'checklists#toggle'
-
+  post '/cards/:id/add_label', to: 'cards#add_label', as: 'cards_add_label'
+  post 'cards/:id/add_due_date', to: 'cards#add_due_date', as: 'cards_add_due_date'
+  
   resources :boards, shallow: true do
     resources :lists, except: :index
   end
