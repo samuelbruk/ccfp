@@ -81,6 +81,8 @@ a {
   width: 275px;
   background-color: lavender;
   border-radius: 3px;
+  border: 1px solid #D2D4D6;
+  box-sizing: border-box;
   margin: 10px 10px 10px 0px;
   padding: 5px;
   color: black;
@@ -129,6 +131,8 @@ span.board-name {
 
 .show-boards .list .cards .card {
   background-color: white;
+  border: 1px solid #D2D4D6;
+  box-sizing: border-box;
   overflow: hidden;
   border-radius: 2px;
   padding: 6px 6px 6px 8px;
@@ -236,6 +240,8 @@ textarea#card_description {
 .modal-labels {
   margin-top: 6px;
   max-width: 70%;
+  display: inline-block;
+  float: left;
 }
 
 .modal-labels .labels-title, .modal-due-date .due-date-title {
@@ -247,7 +253,7 @@ textarea#card_description {
   width: fit-content;
 }
 
-.modal-labels .label-list-label {
+.modal-labels .label-list-label, .attachment-link a {
   font-size: 15px;
   font-weight: bold;
   color: white;
@@ -257,6 +263,29 @@ textarea#card_description {
   padding: 0 5px;
   margin-right: 5px;
   margin-bottom: 5px;
+}
+
+.modal-attachment {
+    margin-top: 6px;
+    margin-left: 50px;
+    display: inline-block;
+}
+
+.modal-attachment .attachment-title {
+    color: #7d7d7d;
+    display: block;
+}
+
+.attachment-link a {
+ background-color: #f19d28;
+}
+
+.attachment-link a:hover {
+ color: white;
+}
+
+.modal-due-date {
+  clear: both;
 }
 
 .modal-due-date .due-date-content {
@@ -321,6 +350,26 @@ textarea#card_description {
   width: 105px;
   margin-bottom: 5px;
   background-color: white;
+}
+
+form.add-card-attachment-form {
+  background: white;
+  padding: 5px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  border: 1px solid #D2D4D6;
+}
+
+input#card_card_attachment {
+    border: none;
+}
+
+.form-group.file.optional.card_card_attachment {
+    margin-bottom: 0;
+}
+
+input#card_card_attachment {
+    width: 90px;
 }
 
 //////////////// Modal -- End///////////////////////////////

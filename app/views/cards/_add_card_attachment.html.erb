@@ -1,0 +1,5 @@
+<%= simple_form_for(@card, url: cards_add_card_attachment_path(@card), html: { class: "add-card-attachment-form" }, method: :post, remote: true) do |f| %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+  <%= f.input(:card_attachment, class: 'form-control') %>
+  <%= f.submit('upload', class: 'btn btn-success') %>
+<% end %>

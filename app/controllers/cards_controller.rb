@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_card, only: [:show, :edit, :update, :destroy, :add_label, :add_due_date]
+  before_action :find_card, only: [:show, :edit, :update, :destroy, :add_label, :add_due_date, :add_card_attachment]
 
   def show
     @checklists = @card.checklists.order(:created_at)
@@ -8,7 +8,7 @@ class CardsController < ApplicationController
     @comment = Comment.new
     @label = Label.new
     respond_to do |format|
-      format.js { render :show}
+      format.js { render :show }
     end
   end
 
@@ -72,6 +72,14 @@ class CardsController < ApplicationController
     end
   end
 
+  def add_card_attachment
+    if @card.update(card_attachment_param)
+      respond_to do |format|
+        format.js { render :add_card_attachment_success }
+      end
+    end
+  end
+
   private
   def find_card
     @card = Card.find(params[:id])
@@ -87,5 +95,9 @@ class CardsController < ApplicationController
 
   def due_date_param
     params.require(:dead_line)
+  end
+
+  def card_attachment_param
+    params.require(:card).permit(:card_attachment)
   end
 end

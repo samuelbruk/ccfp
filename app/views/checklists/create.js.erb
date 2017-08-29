@@ -1,3 +1,3 @@
 $('#modal-checklist .modal-checklist-new').html($('.add-link-checklist').show());
 
-$('#modal-checklist .modal-checklist-list').append('<% id = @checklist.id %> <div class="funkyradio"><div class="funkyradio-primary"><input type="checkbox" name="checkbox" id="checkbox<%= id %>" /><label for="checkbox<%= id %>" data-cid="<%= id %>"> <%= @checklist.content %> </label></div></div>');
+$('#modal-checklist .modal-checklist-list').append($('<% id = @checklist.id %> <div class="funkyradio"><div class="funkyradio-primary"><input type="checkbox" name="checkbox" id="checkbox<%= id %>" /><label for="checkbox<%= id %>" data-cid="<%= id %>"> <%= @checklist.content %> </label></div></div>').hide().fadeIn(700));
