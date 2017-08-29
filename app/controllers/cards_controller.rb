@@ -3,7 +3,7 @@ class CardsController < ApplicationController
   before_action :find_card, only: [:show, :edit, :update, :destroy, :add_label, :add_due_date]
 
   def show
-    @checklists = @card.checklists
+    @checklists = @card.checklists.order(:created_at)
     @checklist = Checklist.new
     @comment = Comment.new
     @label = Label.new
@@ -65,9 +65,10 @@ class CardsController < ApplicationController
   end
 
   def add_due_date
-    @card.update(dead_line: due_date_param)
-    respond_to do |format|
-      format.js { render :add_due_date_success }
+    if @card.update(dead_line: due_date_param)
+      respond_to do |format|
+        format.js { render :add_due_date_success }
+      end
     end
   end
 
@@ -85,6 +86,6 @@ class CardsController < ApplicationController
   end
 
   def due_date_param
-    params.require(:due_date)
+    params.require(:dead_line)
   end
 end

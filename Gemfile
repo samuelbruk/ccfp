@@ -31,8 +31,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan', '~> 2.0'
 gem 'font-awesome-rails'
+gem 'carrierwave'
+gem 'mini_magick'
 gem 'cowsay'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'zebra-datepicker-rails'
 gem 'faker', github: 'stympy/faker'
 
 # Use Capistrano for deployment

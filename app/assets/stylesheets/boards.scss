@@ -24,9 +24,9 @@ a {
 
 .index-boards .board .board-wrapper {
   border-radius: 5px;
-  //padding-left: 10px;
-  background-color: lavender;
+  background-color: rgb(45, 89, 111);
   min-height: 85px;
+  color: white;
 }
 
 .index-boards .board .board-wrapper a {
@@ -35,7 +35,7 @@ a {
   width: 100%;
   min-height: 85px;
   text-decoration: none;
-  color: grey;
+  color: white;
   padding: 10px;
 }
 
@@ -44,7 +44,7 @@ a {
 }
 
 .index-boards .add-board .board-wrapper a {
-  color: grey;
+  color: white;
   justify-content: center;
   align-items: center;
 }
@@ -65,8 +65,9 @@ a {
 //////// Show Boards ////////////////
 .board-name a.board-name {
   text-decoration: none;
-  color: black;
+  color: #4d4d4d;
   font-weight: bold;
+  margin-right: 10px;
   //font-size: 13px;
 }
 
@@ -86,6 +87,10 @@ a {
   height: fit-content;
 }
 
+.list-name {
+  margin-left: 2px;
+  margin-bottom: 6px;
+}
 .show-boards .list .list-name .list-link {
   //font-size: 12px;
   font-weight: bold;
@@ -105,19 +110,28 @@ a {
   justify-content: center;
   align-items: center;
 }
+
+#new_board {
+  padding-top: 5px;
+}
+
 //////// Show Boards -- End /////////////////////////////
 
 //////// Show Boards-Lists-Cards ////////////////////////
 // '.list' is styled above as '.show-boards .list'
 span.board-name {
-    display: block;
+  display: block;
+  margin-top: 8px;
+  padding-left: 4px;
+  font-family: Montserrat;
+  letter-spacing: 0.3px;
 }
 
 .show-boards .list .cards .card {
   background-color: white;
   overflow: hidden;
   border-radius: 2px;
-  padding: 0px 4px;
+  padding: 6px 6px 6px 8px;
   margin-bottom: 5px;
 }
 
@@ -133,6 +147,26 @@ span.board-name {
 
 .show-boards .list .cards .card .card-summary {
   clear: both;
+}
+
+.card-summary .card-dead-line-summary {
+  display: inline-block;
+  background-color: #ec9488;
+  border-radius: 4px;
+  color: white;
+  letter-spacing: 0.2px;
+  padding: 0 4px;
+  margin-right: 10px;
+}
+
+.card-summary .card-checklist-summary {
+    display: inline-block;
+    background-color: #5aac44;
+    border-radius: 4px;
+    color: white;
+    letter-spacing: 0.2px;
+    padding: 0px 4px;
+    margin-top: 4px;
 }
 
 .show-boards .list .cards .new-link-card {
@@ -204,7 +238,7 @@ textarea#card_description {
   max-width: 70%;
 }
 
-.modal-labels .labels-title {
+.modal-labels .labels-title, .modal-due-date .due-date-title {
   color: #7d7d7d;
   display: inline-block;
 }
@@ -218,11 +252,23 @@ textarea#card_description {
   font-weight: bold;
   color: white;
   background-color: #eb5a46;
-  border-radius: 2px;
+  border-radius: 5px;
   display: inline-block;
   padding: 0 5px;
   margin-right: 5px;
   margin-bottom: 5px;
+}
+
+.modal-due-date .due-date-content {
+  font-size: 15px;
+  font-weight: bold;
+  display: inline-block;
+  background-color: #ec9488;
+  border-radius: 5px;
+  color: white;
+  letter-spacing: 0.2px;
+  padding: 0 5px;
+  margin-right: 10px;
 }
 
 #modal-content {
@@ -263,13 +309,20 @@ textarea#card_description {
   color: white;
 }
 
-.add-label-form {
+.add-label-form, .add-due-date-form {
     margin-bottom: 5px;
 }
 
 .add-label-form .form-control {
     margin-bottom: 5px;
 }
+
+#dead_line {
+  width: 105px;
+  margin-bottom: 5px;
+  background-color: white;
+}
+
 //////////////// Modal -- End///////////////////////////////
 
 /////////////////// Comments /////////////////////////////

@@ -1,5 +1,5 @@
-$('.add-label-form').remove();
+$('.add-due-date-form').remove();
 
-$('.side-bar-label').show();
+$('.side-bar-due-date').show();
 
-// $('.modal-labels .label-list').append('<% @names.each do |label| %><span class="label-list-label"><%= label %></span><%end%>');
+$('.due-date-value').html('<% if @card.dead_line != nil %><span class="due-date-content"><%= @card.dead_line.strftime("%B %d, %Y") %></span><% end %>');

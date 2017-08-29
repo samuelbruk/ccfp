@@ -1,3 +1,3 @@
 $('form#new_comment').trigger('reset');
 
-$('#modal-comment .modal-comment-list').prepend('<div><span class="content"><%= @comment.content%></span><br/><span class="date"><%= @comment.created_at %></span></div>');
+$('#modal-comment .modal-comment-list').prepend('<div class="indent-content"><span class="content"><%= @comment.content%></span><br/><span class="date"><%= @comment.created_at.strftime("%B %d, %Y %H:%M") %></span></div>');

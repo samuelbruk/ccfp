@@ -16,19 +16,29 @@
         <% end %>
       </div>
       <div class="cards">
-        <% list.cards.each do |card| %>
+        <%
+            list.cards.each do |card|
+            dead_line = card.dead_line
+            c = card.checklists.count
+         %>
           <div class="card">
             <%= link_to card.name, card_path(card), class: "card-link", remote: true %>
             <%= link_to card_path(card), method: :delete, class: "card-delete-link" do %>
                   <span class="glyphicon glyphicon-trash"></span>
             <% end %>
             <div class="card-summary">
-              <span><%= card.dead_line %></span>
-              <span><%= c = card.checklists.count
-                        if c!= 0
-                          c
-                        end
-                %></span>
+              <% if dead_line != nil %>
+                <span class="card-dead-line-summary">
+                  <i class="fa fa-clock-o" aria-hidden="true"></i>
+                  <%= dead_line.strftime("%B %d, %Y") %>
+                </span>
+              <% end %>
+              <% if c!= 0 %>
+                <span class="card-checklist-summary">
+                <i class="fa fa-list-alt" aria-hidden="true"></i>
+                <%= c %>
+                </span>
+              <% end %>
             </div>
           </div>
         <% end %>
@@ -66,7 +76,7 @@
 
             <div class="modal-due-date">
               <span class="due-date-title">Due Date</span>
-              <div>                
+              <div class="due-date-value">
               </div>
             </div>
 

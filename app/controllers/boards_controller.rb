@@ -19,7 +19,7 @@ class BoardsController < ApplicationController
     @board = current_user.boards.new(board_params)
 
     if @board.save
-      redirect_to boards_path, notice: "New board created!"
+      redirect_to board_path(@board), notice: "New board created!"
     else
       flash[:error] = 'Failed to create a board!'
       render :new
