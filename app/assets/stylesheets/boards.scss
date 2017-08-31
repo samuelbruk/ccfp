@@ -12,7 +12,7 @@ a {
  flex-wrap: wrap;
  max-width: 1000px;
  margin: 0 auto;
- margin-top: 20px;
+ margin-top: 100px;
 }
 
 .index-boards .board {
@@ -89,6 +89,7 @@ a {
   min-height: 790px;
   font-family: "Ubuntu", sans-serif;
   font-size: 15px;
+  display: none;
 }
 
 .collaborators-title {
@@ -128,16 +129,23 @@ a {
   border-radius: 5px;
   background-color: lavender;
   margin: 10px 10px 10px 0px;
-  padding: 10px;
-  height: fit-content;
+  padding: 0 10px 10px 10px;
+  width: 275px;
+  height: 58px;
+  border: 1px solid #D2D4D6;
 }
 
 .show-boards .new-link a {
-  width: 250px;
-  height: 25px;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
+}
+
+form#new_list {
+    margin-top: 10px;
 }
 
 #new_board {
@@ -150,7 +158,7 @@ a {
 // '.list' is styled above as '.show-boards .list'
 span.board-name {
   display: block;
-  margin-top: 8px;
+  margin-top: 60px;
   padding-left: 4px;
   font-family: Montserrat;
   letter-spacing: 0.3px;

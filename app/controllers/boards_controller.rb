@@ -6,7 +6,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @lists = @board.lists.order(created_at: :desc)
+    @lists = @board.lists.order(created_at: :asc)
     @list = List.new
     @card = Card.new
   end
