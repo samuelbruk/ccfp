@@ -11,8 +11,145 @@
  * It is generally better to create a new file per style scope.
  *
  *= require font-awesome
+ *= require jquery-ui/datepicker
  *= require_tree .
  *= require_self
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import "zebra-datepicker/default";
+
+a {
+  color: #4d4d4d
+}
+
+div {
+
+}
+
+.btn {
+  font-size: inherit;
+}
+
+input.btn.btn-default, input.btn.btn-success {
+    margin-top: 5px;
+}
+
+.nav {
+  height: 30px
+}
+
+.navbar.navbar-default {
+  background-color: rgb(49, 112, 143);
+  position: fixed;
+  width: 100%;
+}
+
+.navbar {
+  margin-bottom: 0px;
+  border: 0;
+  border-radius: 0px;
+}
+
+.navbar-default  .navbar-brand {
+  //padding-top: 25px;
+  font-family: 'Oleo Script', cursive;
+  font-weight: bold;
+  color: white;
+  float: left;
+  padding: 16px 15px 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+  height: 50px;
+}
+
+.navbar-default  .navbar-brand:hover {
+  color: white;
+}
+
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-nav > li > a:hover {
+  color: #fff;
+  font-weight: bold;
+}
+
+.navbar li:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  background-color: #2d596f;
+  color: white;
+}
+
+.dropdown-menu {
+  background-color: #31708f;
+}
+
+.dropdown-menu > li > a {
+  color: white;
+  font-weight: bold;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    text-decoration: none;
+    color: white;
+    background-color: unset;
+}
+
+.navbar-form {
+  //padding-top: 7px;
+}
+
+.navbar-right .fa-bell {
+  font-size: 16px;
+}
+
+.navbar-right a.dropdown-toggle {
+  font-weight: bold;
+}
+
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+    height: 150px;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: white;
+}
+
+.form-control {
+  font-size: inherit;
+}
+
+.form-group input {
+  font-size: inherit;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  // color: TODO
+  background-color: rgba(100,100,100,0.1);
+}
+
+html {
+  font-family: "jaf-facitweb","Helvetica Neue",Arial,sans-serif;
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  background-color: #fcfcfc;
+  padding: 0px;
+  margin: 0px;
+  //font-size: 12px;
+}
+
+.centr-div {
+  // width: 100%;
+  // text-align: center;
+}
+.centr-div div{
+  //display: inline-block;
+}

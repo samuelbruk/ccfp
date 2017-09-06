@@ -1,0 +1,4 @@
+<%= form_for @card, remote: true do |f| %>
+  <%= f.text_area(:description, placeholder: 'Add description here...', class: 'form-control') %>
+  <%= f.submit('Save', class: 'btn btn-success') %>
+<% end %>

@@ -1,0 +1,48 @@
+$('#card-name').html('<%= j @card.name %>');
+
+$('#card-description').html('<%= j @card.description %><br />');
+
+$('#card-description-edit').html('<%= j link_to "Edit", edit_card_path(@card), remote: true %>');
+
+$('.label-list').html('<% @card.labels.each do |label| %><span class="label-list-label"><%= label.name %></span><%end%>');
+
+$('.due-date-value').html('<% if @card.dead_line != nil %><span class="due-date-content"><%= @card.dead_line.strftime("%B %d, %Y") %></span><% end %>');
+
+$('.attachment-link').html('<a href= "http://localhost:3000<%= @card.card_attachment.url %>" target="_blank" > Attachment1 </a>')
+
+$('#modal-checklist .modal-checklist-list').html('<% @checklists.each do |ch| %><% id = ch.id %> <div class="funkyradio"><div class="funkyradio-primary"><input type="checkbox" name="checkbox" id="checkbox<%= id %>" <% if (ch.is_checked) %>checked<% end %>/><label for="checkbox<%= id %>" data-cid="<%= id %>"> <%= ch.content %> </label></div></div><% end %>');
+
+$('#modal-checklist .modal-checklist-new').html('<%= link_to "Add Checklist", new_card_checklist_path(@card, @checklist), remote: true, class: "add-link-checklist" %>');
+
+$('#modal-comment .modal-comment-new').html('<%= j render("add_comment") %>');
+
+$('#modal-comment .modal-comment-list').html('<% @card.comments.each do |comment| %><div class="indent-content"><span class="content"><%= comment.content%></span><br/><span class="date"><%= comment.created_at.strftime("%B %d, %Y %H:%M") %></span></div><% end %>');
+
+$('.modal-side-bar-add').html('<%= link_to "Label", "#", onclick: "showAddLabelForm()", class: "btn btn-default side-bar-btn side-bar-label" %><%= link_to "Due Date", "#", onclick: "showAddDueDateForm()", class: "btn btn-default side-bar-btn side-bar-due-date" %><%= link_to "Attachment", "#", onclick: "showAddAttachmentForm()", class: "btn btn-default side-bar-btn side-bar-card-attachment" %>');
+
+$('#myModal').modal('show');
+
+$('#modal-checklist').on('click', event => {
+  const {target} = event;
+
+  if(target.nodeName == "LABEL") {
+    const cid = parseInt($(target).data('cid'));
+      $.ajax({
+        type: "POST",
+        url: `/checklists/${cid}/toggle`,
+      });
+    }
+  });
+
+function showAddLabelForm() {
+  $('.side-bar-label').hide().after('<%= j render("edit_label_form")%>');
+}
+
+function showAddDueDateForm() {
+  $('.side-bar-due-date').hide().after('<%= j render("add_due_date_form")%>');
+}
+
+function showAddAttachmentForm() {
+  $('.side-bar-card-attachment').hide().after('<%= j render("add_card_attachment")%>');
+
+}

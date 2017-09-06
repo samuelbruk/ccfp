@@ -1,0 +1,4 @@
+<%= form_for [@card, @comment], remote: true do |f| %>
+  <%= f.text_area(:content, placeholder: 'Your comment here...', class: 'form-control') %>
+  <%= f.submit('Save', class: 'btn btn-success') %>
+<% end %>

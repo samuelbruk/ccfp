@@ -10,32 +10,41 @@ a {
 .index-boards {
  display: flex;
  flex-wrap: wrap;
+ max-width: 1000px;
+ margin: 0 auto;
+ margin-top: 100px;
 }
 
 .index-boards .board {
-  width: 250px;
-  height: 100px;
-  background-color: lavender;
-  border-radius: 5px;
-  margin-right: 10px;
+  //max-width: 200px;
+  //margin-right: 10px;
   margin-bottom: 10px;
   color: black;
 }
 
-.index-boards .board a {
+.index-boards .board .board-wrapper {
+  border-radius: 5px;
+  background-color: rgb(45, 89, 111);
+  min-height: 85px;
+  color: white;
+}
+
+.index-boards .board .board-wrapper a {
+  font-weight: bold;
   display: flex;
   width: 100%;
-  height: 100%;
+  min-height: 85px;
   text-decoration: none;
-  color: grey;
+  color: white;
   padding: 10px;
 }
 
-.index-boards .add-board {
+.index-boards .add-board .board-wrapper{
+  //text-align: center;
 }
 
-.index-boards .add-board a {
-  color: grey;
+.index-boards .add-board .board-wrapper a {
+  color: white;
   justify-content: center;
   align-items: center;
 }
@@ -43,34 +52,76 @@ a {
 .index-boards a:hover {
   background-color: hsla(0, 100%, 90%, 0.2);
 }
+
+.board-form.form-control {
+  margin-bottom: 5px;
+}
+
+.board-form.form-control input {
+  padding-top: 10px;
+}
 //////// Index Boards -- End ///////////////
 
 //////// Show Boards ////////////////
 .board-name a.board-name {
   text-decoration: none;
-  color: black;
+  color: #4d4d4d;
   font-weight: bold;
-  font-size: 25px;
+  margin-right: 10px;
+  //font-size: 13px;
 }
 
 .show-boards {
- display: flex;
- flex-wrap: wrap;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
 
+.collaborators {
+  width: 200px;
+  background-color: #EDEFF0;
+  border-radius: 3px;
+  border: 1px solid #D2D4D6;
+  box-sizing: border-box;
+  margin: 10px 10px 10px 0px;
+  padding: 5px;
+  color: #4d4d4d;
+  min-height: 790px;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 15px;
+  display: none;
+}
+
+.collaborators-title {
+  display: inline-block;
+  font-weight: 400;
+  float: left;
+}
+
+.collaborators-add {
+  font-size: 17px;
+  display: inline-block;
+  float: right;
 }
 
 .show-boards .list {
-  width: 250px;
+  width: 275px;
   background-color: lavender;
-  border-radius: 5px;
+  border-radius: 3px;
+  border: 1px solid #D2D4D6;
+  box-sizing: border-box;
   margin: 10px 10px 10px 0px;
-  padding: 10px;
+  padding: 5px;
   color: black;
-  //display: flex;
+  height: fit-content;
 }
 
+.list-name {
+  margin-left: 2px;
+  margin-bottom: 6px;
+}
 .show-boards .list .list-name .list-link {
-  font-size: 18px;
+  //font-size: 12px;
   font-weight: bold;
 }
 
@@ -78,19 +129,440 @@ a {
   border-radius: 5px;
   background-color: lavender;
   margin: 10px 10px 10px 0px;
-  padding: 10px;
+  padding: 0 10px 10px 10px;
+  width: 275px;
+  height: 58px;
+  border: 1px solid #D2D4D6;
 }
 
 .show-boards .new-link a {
-  width: 250px;
-  height: 25px;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
 }
-//////// Show Boards -- End ////////////////
+
+form#new_list {
+    margin-top: 10px;
+}
+
+#new_board {
+  padding-top: 5px;
+}
+
+//////// Show Boards -- End /////////////////////////////
 
 //////// Show Boards-Lists-Cards ////////////////////////
 // '.list' is styled above as '.show-boards .list'
+span.board-name {
+  display: block;
+  margin-top: 60px;
+  padding-left: 4px;
+  font-family: Montserrat;
+  letter-spacing: 0.3px;
+}
 
-//////// Show Boards-Lists-Cards -- End ////////////////
+.show-boards .list .cards .card {
+  background-color: white;
+  border: 1px solid #D2D4D6;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 2px;
+  padding: 6px 6px 6px 8px;
+  margin-bottom: 5px;
+}
+
+.show-boards .list .cards .card .card-link {
+  display: inline-block;
+  float: left;
+  clear: left;
+}
+.show-boards .list .cards .card .card-delete-link {
+  display: inline-block;
+  float: right;
+}
+
+.show-boards .list .cards .card .card-summary {
+  clear: both;
+}
+
+.card-summary .card-dead-line-summary {
+  display: inline-block;
+  background-color: #ec9488;
+  border-radius: 4px;
+  color: white;
+  letter-spacing: 0.2px;
+  padding: 0 4px;
+  margin-right: 10px;
+}
+
+.card-summary .card-checklist-summary {
+    display: inline-block;
+    background-color: #5aac44;
+    border-radius: 4px;
+    color: white;
+    letter-spacing: 0.2px;
+    padding: 0px 4px;
+    margin-top: 4px;
+}
+
+.show-boards .list .cards .new-link-card {
+  clear: both;
+}
+//////// Show Boards-Lists-Cards -- End /////////////////
+
+/////////////////// Modal ///////////////////////////////
+.indent-content {
+  margin-left: 18px;
+}
+
+.modal-dialog {
+  width: 700px !important;
+}
+
+.modal.in .modal-dialog {
+  border-radius: 6px;
+}
+
+.modal-module-title {
+  font-family: "Ubuntu", sans-serif;
+  letter-spacing: 0.5px;
+  //font-size: 13px;
+  font-weight: 500;
+  color: #4d4d4d;
+  display: block;
+  margin: 15px 0 10px 0;
+}
+
+.modal-module-title-fai, .modal-module-title-fai {
+  margin-right: 10px
+}
+
+.modal-module-title-fai {
+
+}
+
+#card-name {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 16px;
+  font-weight: bolder;
+  letter-spacing: 0.3px;
+  display: block;
+}
+
+.modal-body .card-description-title {
+  color: #7d7d7d;
+}
+
+.modal-body .card-description-edit a {
+  color: #7d7d7d;
+  text-decoration: underline;
+}
+
+.modal-body .card-description {
+  display: block;
+  color: #4d4d4d;
+}
+
+textarea#card_description {
+  max-width: 350px;
+  min-height: 70px;
+  background-color: #edeff0;
+}
+
+.modal-labels {
+  margin-top: 6px;
+  max-width: 70%;
+  display: inline-block;
+  float: left;
+}
+
+.modal-labels .labels-title, .modal-due-date .due-date-title {
+  color: #7d7d7d;
+  display: inline-block;
+}
+
+.modal-labels .label-list {
+  width: fit-content;
+}
+
+.modal-labels .label-list-label, .attachment-link a {
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  background-color: #eb5a46;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 0 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.modal-attachment {
+    margin-top: 6px;
+    margin-left: 50px;
+    display: inline-block;
+}
+
+.modal-attachment .attachment-title {
+    color: #7d7d7d;
+    display: block;
+}
+
+.attachment-link a {
+ background-color: #f19d28;
+}
+
+.attachment-link a:hover {
+ color: white;
+}
+
+.modal-due-date {
+  clear: both;
+}
+
+.modal-due-date .due-date-content {
+  font-size: 15px;
+  font-weight: bold;
+  display: inline-block;
+  background-color: #ec9488;
+  border-radius: 5px;
+  color: white;
+  letter-spacing: 0.2px;
+  padding: 0 5px;
+  margin-right: 10px;
+}
+
+#modal-content {
+  border-radius: 6px 6px 6px 6px;
+  background-color: #edeff0;
+}
+
+.modal-header {
+  //background-color: white;
+  padding: 15px 15px 6px 15px !important;
+  border-bottom: unset !important;
+}
+
+#modal-body {
+    padding: 0;
+    overflow: hidden;
+}
+
+#modal-side-bar {
+    padding: 0 10px 0 0;
+}
+
+#modal-side-bar .side-bar-btn {
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 12px
+}
+
+#modal-side-bar .side-bar-btn:hover {
+  background-color: #298fca;
+  color: white;
+}
+
+#modal-side-bar .side-bar-btn:active {
+  background-color: #0079bf;
+  color: white;
+}
+
+.add-label-form, .add-due-date-form {
+    margin-bottom: 5px;
+}
+
+.add-label-form .form-control {
+    margin-bottom: 5px;
+}
+
+#dead_line {
+  width: 105px;
+  margin-bottom: 5px;
+  background-color: white;
+}
+
+form.add-card-attachment-form {
+  background: white;
+  padding: 5px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  border: 1px solid #D2D4D6;
+}
+
+input#card_card_attachment {
+    border: none;
+}
+
+.form-group.file.optional.card_card_attachment {
+    margin-bottom: 0;
+}
+
+input#card_card_attachment {
+    width: 90px;
+}
+
+//////////////// Modal -- End///////////////////////////////
+
+/////////////////// Comments /////////////////////////////
+form#new_comment {
+}
+
+.modal-comment-list {
+  margin-top: 10px;
+}
+
+.modal-comment-list div {
+    border-bottom: 1px solid #E2E4E6;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.modal-comment-list div span.content{
+  background-color: white;
+  padding: 4px 9px;
+  border-radius: 3px;
+  display: inline-block;
+  margin-bottom: 2px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.23);
+}
+
+.modal-comment-list div span.date {
+    font-size: 9px;
+    font-family: 'Ubuntu';
+    font-weight: lighter;
+    letter-spacing: 0.1px;
+    color: #4d4d4d;
+}
+
+//////////////// Comments -- End ////////////////////////
+/////////////////// Checklists //////////////////////////
+
+//// Custom /////
+#modal-checklist label {
+  font-size: 12px;
+}
+//// Custom -- End /////
+
+.funkyradio div {
+  clear: both;
+  overflow: hidden;
+}
+
+.funkyradio label {
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #D1D3D4;
+  font-weight: normal;
+}
+
+.funkyradio input[type="radio"]:empty,
+.funkyradio input[type="checkbox"]:empty {
+  display: none;
+}
+
+.funkyradio input[type="radio"]:empty ~ label,
+.funkyradio input[type="checkbox"]:empty ~ label {
+  position: relative;
+  line-height: 2.5em;
+  text-indent: 3.25em;
+  //margin-top: 2em;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.funkyradio input[type="radio"]:empty ~ label:before,
+.funkyradio input[type="checkbox"]:empty ~ label:before {
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+  width: 2.5em;
+  background: #D1D3D4;
+  border-radius: 3px 0 0 3px;
+}
+
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label,
+.funkyradio input[type="checkbox"]:hover:not(:checked) ~ label {
+  color: #888;
+  background-color: #e2e4e6
+}
+
+.funkyradio input[type="radio"]:hover:checked ~ label,
+.funkyradio input[type="checkbox"]:hover:checked ~ label {
+  background-color: #e2e4e6
+}
+
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label:before,
+.funkyradio input[type="checkbox"]:hover:not(:checked) ~ label:before {
+  content: '\2714';
+  text-indent: .9em;
+  color: #C2C2C2;
+}
+
+.funkyradio input[type="radio"]:checked ~ label,
+.funkyradio input[type="checkbox"]:checked ~ label {
+  color: #777;
+  font-style: italic;
+  text-decoration: line-through;
+}
+
+.funkyradio input[type="radio"]:checked ~ label:before,
+.funkyradio input[type="checkbox"]:checked ~ label:before {
+  content: '\2714';
+  text-indent: .9em;
+  color: #333;
+  background-color: #ccc;
+}
+
+.funkyradio input[type="radio"]:focus ~ label:before,
+.funkyradio input[type="checkbox"]:focus ~ label:before {
+  box-shadow: 0 0 0 3px #999;
+}
+
+.funkyradio-default input[type="radio"]:checked ~ label:before,
+.funkyradio-default input[type="checkbox"]:checked ~ label:before {
+  color: #333;
+  background-color: #ccc;
+}
+
+.funkyradio-primary input[type="radio"]:checked ~ label:before,
+.funkyradio-primary input[type="checkbox"]:checked ~ label:before {
+  color: #fff;
+  background-color: #337ab7;
+}
+
+.funkyradio-success input[type="radio"]:checked ~ label:before,
+.funkyradio-success input[type="checkbox"]:checked ~ label:before {
+  color: #fff;
+  background-color: #5cb85c;
+}
+
+.funkyradio-danger input[type="radio"]:checked ~ label:before,
+.funkyradio-danger input[type="checkbox"]:checked ~ label:before {
+  color: #fff;
+  background-color: #d9534f;
+}
+
+.funkyradio-warning input[type="radio"]:checked ~ label:before,
+.funkyradio-warning input[type="checkbox"]:checked ~ label:before {
+  color: #fff;
+  background-color: #f0ad4e;
+}
+
+.funkyradio-info input[type="radio"]:checked ~ label:before,
+.funkyradio-info input[type="checkbox"]:checked ~ label:before {
+  color: #fff;
+  background-color: #5bc0de;
+}
+/////////////////// Checklists -- End //////////////////////////

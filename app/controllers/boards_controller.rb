@@ -1,11 +1,12 @@
 class BoardsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :find_board, only: [:show, :edit, :update, :destroy]
   def index
-    @boards = Board.order(created_at: :desc)
+    @boards = current_user.boards.order(created_at: :desc)
   end
 
   def show
-    @board = find_board
-    @lists = @board.lists.order(created_at: :desc)
+    @lists = @board.lists.order(created_at: :asc)
     @list = List.new
     @card = Card.new
   end
@@ -15,10 +16,10 @@ class BoardsController < ApplicationController
   end
 
   def create
-    @board = Board.new(board_params)
+    @board = current_user.boards.new(board_params)
+
     if @board.save
-      flash[:notice] = 'New board created!'
-      redirect_to boards_path
+      redirect_to board_path(@board), notice: "New board created!"
     else
       flash[:error] = 'Failed to create a board!'
       render :new
@@ -26,14 +27,11 @@ class BoardsController < ApplicationController
   end
 
   def edit
-    @board = find_board
   end
 
   def update
-    @board = find_board
     if @board.update board_params
-      flash[:notice] = 'Board edited!'
-      redirect_to board_path(@board)
+      redirect_to board_path(@board), notice: 'Board edited!'
     else
       flash[:error] = 'Board could not be edited'
       render :edit
@@ -44,10 +42,8 @@ class BoardsController < ApplicationController
   end
 
   def destroy
-    @board = find_board
     if @board.destroy
-      flash[:notice] = "Board deleted!"
-      redirect_to boards_path
+      redirect_to boards_path, notice: "Board deleted!"
     else
       flash[:error] = "Board could not be deleted!"
       redirect_to boards_path
@@ -56,7 +52,7 @@ class BoardsController < ApplicationController
 
   private
   def find_board
-    Board.find(params[:id])
+    @board = Board.find(params[:id])
   end
 
   def board_params

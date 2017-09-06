@@ -1,4 +1,4 @@
 <%= form_for(@board) do |f|%>
-  <%= f.text_field(:name, placeholder: 'Board Name', class: 'form-control') %>
-  <%= f.submit('Submit', class: 'btn btn-default')%>
+  <%= f.text_field(:name, placeholder: 'Board Name', class: 'board-form form-control') %>
+  <%= f.submit('Save', class: 'btn btn-success')%>
 <% end %>

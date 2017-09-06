@@ -1,21 +1,49 @@
 <span class="board-name">
-  <%= link_to @board.name, edit_board_path(@board), class: "board-name" %>
-  <%= link_to "Delete", board_path(@board), method: :delete, class: "board-delete-link" %>
+  <%= link_to @board.name, edit_board_path(@board), remote: true, class: "board-name" %>
+  <%= link_to board_path(@board), method: :delete, class: "board-delete-link" do %>
+        <span class="glyphicon glyphicon-trash"></span>
+  <% end %>
   <!--TODO add a link to edit board name  -->
 </span>
 <!-- Using 'showw' instead of 'show', 'show' is reserved -->
 <div class="show-boards">
+  <div class="collaborators">
+    <span class="collaborators-title">Collaborators</span>
+    <span class="collaborators-add"><i class="fa fa-plus-square" aria-hidden="true"></i></span>
+  </div>
   <% @lists.each do |list| %>
     <div class="list">
-      <div class="list-name">
-        <%= link_to list.name, list_path(list), class: "list-link"  %>
-        <%= link_to "Delete", list_path(list), method: :delete, class: "list-delete-link"%>
+      <div class="list-name ">
+        <%= link_to list.name, edit_list_path(list), remote: true, class: "list-link list-#{list.id}"  %>
+        <%= link_to list_path(list), method: :delete, class: "list-delete-link" do %>
+              <span class="glyphicon glyphicon-trash"></span>
+        <% end %>
       </div>
       <div class="cards">
-        <% list.cards.each do |card| %>
+        <%
+            list.cards.each do |card|
+            dead_line = card.dead_line
+            c = card.checklists.count
+         %>
           <div class="card">
-            <%= link_to card.name, card_path(card), class: "card-link" %>
-            <%= link_to "Delete", card_path(card), method: :delete, class: "card-delete-link" %>
+            <%= link_to card.name, card_path(card), class: "card-link", remote: true %>
+            <%= link_to card_path(card), method: :delete, class: "card-delete-link" do %>
+                  <span class="glyphicon glyphicon-trash"></span>
+            <% end %>
+            <div class="card-summary">
+              <% if dead_line != nil %>
+                <span class="card-dead-line-summary">
+                  <i class="fa fa-clock-o" aria-hidden="true"></i>
+                  <%= dead_line.strftime("%B %d, %Y") %>
+                </span>
+              <% end %>
+              <% if c!= 0 %>
+                <span class="card-checklist-summary">
+                <i class="fa fa-list-alt" aria-hidden="true"></i>
+                <%= c %>
+                </span>
+              <% end %>
+            </div>
           </div>
         <% end %>
         <div class="new-link-card">
@@ -27,4 +55,66 @@
   <div class="new-link">
     <%= link_to('Add List', new_board_list_path(@board, @list), remote: true, class: "new-link") %>
   </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div id="modal-content" class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <!-- <h4 class="modal-title" ></h4> -->
+          <span id="card-name" class="card-name"></span>
+        </div>
+
+        <div id="modal-body" class="modal-body">
+          <div class="modal-main-col col-sm-10">
+            <span class="card-description-title">Description</span>
+            <span id="card-description-edit" class="card-description-edit"></span>
+            <span id="card-description" class="card-description"></span>
+
+            <div class="modal-labels">
+              <span class="labels-title">Labels</span>
+              <div class="label-list">
+              </div>
+            </div>
+
+            <div class="modal-attachment">
+              <span class="attachment-title">Attachment</span>
+              <span class="attachment-link"></span>
+            </div>
+
+            <div class="modal-due-date">
+              <span class="due-date-title">Due Date</span>
+              <div class="due-date-value">
+              </div>
+            </div>
+
+            <span class="modal-module-title"><i class="fa fa-list-alt modal-module-title-fai" aria-hidden="true"></i>Checklist</span>
+            <div id="modal-checklist" class="modal-checklist">
+              <div class="modal-checklist-list">
+              </div>
+              <div class="modal-checklist-new">
+              </div>
+            </div>
+            <div id="modal-comment" class="modal-comment">
+              <span class="comment-title modal-module-title"><i class="fa fa-comment modal-module-title-fai" aria-hidden="true"></i>Add Comment</span>
+              <div class="modal-comment-new indent-content">
+              </div>
+              <div class="modal-comment-list">
+              </div>
+            </div>
+          </div>
+          <div id="modal-side-bar" class="modal-side-bar col-sm-2">
+            <span class="modal-module-title">Add</span>
+            <div class="modal-side-bar-add"></div>
+          </div>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <!-- Modal End-->
 </div>

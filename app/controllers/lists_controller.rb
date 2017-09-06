@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
-  before_action :find_list, only: [:show, :destroy]
+  before_action :authenticate_user!
+  before_action :find_list, only: [:show, :edit, :update, :destroy]
 
   # def index
   # end
@@ -17,19 +18,29 @@ class ListsController < ApplicationController
     @list = @board.lists.build(list_params)
 
     if @list.save
-      flash[:notice] = 'New List created!'
-      redirect_to board_path(@board)
+      redirect_to board_path(@board), notice: "New List created!"
     else
       flash[:error] = 'Failed to create a list'
       render :new
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @list.update list_params
+      redirect_to board_path(@list.board), notice: "New List created!"
+    else
+      flash[:error] = 'Failed to create a list'
+      render :edit
+    end
+  end
+
   def destroy
     @board = @list.board
     if @list.destroy
-      flash[:notice] = 'List deleted!'
-      redirect_to board_path(@board)
+      redirect_to board_path(@board), notice: "List deleted!"
     else
       flash[:error] = 'List could not be deleted!'
       redirect_to board_path(@board)

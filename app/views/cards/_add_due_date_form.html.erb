@@ -1,0 +1,15 @@
+<form class="add-due-date-form" action='<%= cards_add_due_date_path(@card) %>' method="post" data-remote="true">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+    <!-- <input name="name" placeholder="lbl1, lbl2, ..." class="form-control" /> -->
+    <input class="form-control" id="dead_line" name="dead_line" type="text"/>
+    <button class="btn btn-success">Add</button>
+</form>
+
+<script type="text/javascript">
+  $('#dead_line').Zebra_DatePicker({
+    position: {
+        my: "left top",
+        at: "left bottom"
+    }
+});
+</script>

@@ -1,12 +1,16 @@
 <div class="index-boards">
   <% @boards.each do |board| %>
-    <div class="board">
-      <span class="board-name">
-        <%= link_to board.name, board_path(board), class: "board-link"  %>
-      </span>
+    <div class="board col-md-3 col-sm-4 col-xs-12">
+      <div class="board-wrapper">
+        <!-- <span class="board-name"> -->
+          <%= link_to board.name, board_path(board), class: "board-link"  %>
+        <!-- </span> -->
+      </div>
     </div>
   <% end %>
-  <div class="add-board">
-    <%= link_to "Add Board", new_board_path, remote: true, class: "new-link" %>
+  <div class="board add-board col-md-3 col-sm-4 col-xs-12">
+    <div class="board-wrapper">
+      <%= link_to "Add Board", new_board_path, remote: true, class: "new-link" %>
+    </div>
   </div>
 </div>
