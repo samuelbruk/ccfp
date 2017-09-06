@@ -40,6 +40,8 @@ gem 'jquery-ui-rails'
 gem 'zebra-datepicker-rails'
 gem 'faker', github: 'stympy/faker'
 
+gem "letter_opener"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

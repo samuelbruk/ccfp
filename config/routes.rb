@@ -22,7 +22,12 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
-  resources :users, only: :create
+  resources :users, only: :create do
+    member do
+      get :confirm_email
+    end
+  end
+
   resource :session, only: [:create, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
