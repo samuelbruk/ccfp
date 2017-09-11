@@ -3,8 +3,10 @@ class UsersController < ApplicationController
     @user = User.new user_params
 
     if @user.save
-      UserMailer.registration_confirmation(@user).deliver
-      # session[:user_id] = @user.id
+      # UserMailer.registration_confirmation(@user).deliver
+      # TODO remove '@user.update..', 'session[:user_id]..' and enable 'UserMailer..' to enable email-ver
+      @user.update(email_confirmed: true)
+      session[:user_id] = @user.id
       redirect_to root_path, notice: "Thank you for signing up!"
     else
       flash.now[:alert] = @user.errors.full_messages.join(', ')
