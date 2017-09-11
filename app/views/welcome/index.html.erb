@@ -1,18 +1,18 @@
 <div class="welcome-page">
   <div class="container-fluid row first-row">
-    <div class="col-sm-offset-4 col-sm-4">
+    <div class="welcome-form">
       <div class="text-center">
         <h1>Welcome to KAMMI</h1>
       </div>
       <div class="text-center">
         <h2><a name="sign_in"></a>Sign In</h2>
       </div>
-      <%= form_tag session_path do %>
-        <div class="col-sm-offset-3 form-group sign-in">
+      <%= form_tag session_path, class: "sign-in" do %>
+        <div class="form-group sign-in">
           <%= label_tag :email %><br />
           <%= email_field_tag :email %>
         </div>
-        <div class="col-sm-offset-3 form-group sign-in">
+        <div class="form-group sign-in">
           <%= label_tag :password %><br />
           <%= password_field_tag :password %>
         </div>

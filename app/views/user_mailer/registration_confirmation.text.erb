@@ -1,5 +1,7 @@
 Hi <%= @user.first_name %>,
 
-Thanks for registering! To confirm your registration click the URL below.
+Thanks for registering with KAMMI!
 
-<%= confirm_email_user_url(@user.confirm_token, host: "localhost:3000") %>
+To confirm your registration click the URL below.
+
+<%= confirm_email_user_url(@user.confirm_token, host: "http://ca220937.ngrok.io") %>
