@@ -2,12 +2,13 @@
   font-family: 'Ubuntu', "Helvetica Neue", Arial, sans-serif;
 }
 
+
 .first-row {
-  background-color:  #bb1133;
-  color: white;
   font-weight: bold;
   padding-top: 60px;
   padding-bottom: 100px;
+  display: flex;
+  justify-content: center;
 }
 
 .first-row h1 {
@@ -16,6 +17,24 @@
 
 .first-row h2 {
   font-weight: 500;
+}
+
+div.welcome-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+form.sign-in {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+div.form-group.sign-in {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .first-row submit {
@@ -44,7 +63,7 @@
 }
 
 .second-row {
-  background-color: #5e8eed;
+  background-color: #31708f;
   color: white;
   font-weight: bold;
   padding-top: 60px;

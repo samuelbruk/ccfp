@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     # @user = User.new
     if user&.authenticate(params[:password])
-      if user.email_confirmed
+      if user.email_confirmed 
         session[:user_id] = user.id
         redirect_to boards_path, notice: "You're signed in!"
       else
