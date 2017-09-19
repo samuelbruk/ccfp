@@ -1,24 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Description
+Trello-type project management app built using Ruby on Rails, jQuery, AJAX, HTML, CSS and Postgresql. The app allows users to manage tasks using cards that contain checklists, comments, attachments, etc.
+URL: https://kammi.herokuapp.com/
