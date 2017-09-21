@@ -9,6 +9,7 @@ class BoardsController < ApplicationController
     @lists = @board.lists.order(created_at: :asc)
     @list = List.new
     @card = Card.new
+    # @relationship = Relationship
   end
 
   def new

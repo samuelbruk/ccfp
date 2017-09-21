@@ -103,6 +103,23 @@ a {
   float: right;
 }
 
+// .collaborators .users-search form {
+//   overflow: hidden;
+//   display: block;
+//   clear: both;
+//   min-height: 500px;
+//   position: absolute;
+// }
+
+.collaborators .users-search input {
+    width: 188px;
+    border-radius: 2px;
+    border: 1px solid grey;
+}
+
+.collaborators-list {
+}
+
 .show-boards .list {
   width: 275px;
   background-color: lavender;

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170906190659) do
+ActiveRecord::Schema.define(version: 20170920220110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,8 @@ ActiveRecord::Schema.define(version: 20170906190659) do
     t.integer "connection_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "board_id"
+    t.index ["board_id"], name: "index_relationships_on_board_id"
     t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
@@ -98,5 +100,6 @@ ActiveRecord::Schema.define(version: 20170906190659) do
   add_foreign_key "checklists", "cards"
   add_foreign_key "comments", "cards"
   add_foreign_key "lists", "boards"
+  add_foreign_key "relationships", "boards"
   add_foreign_key "relationships", "users"
 end

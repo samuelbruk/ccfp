@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :force_json, only: :search
+
   def create
     @user = User.new user_params
 
@@ -27,6 +29,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def search
+    # puts params[:term]
+    @search = User.ransack(first_name_or_last_name_or_email_cont: params[:term]).result().limit(5)
+    # byebug
+    # render json: ['samuel'].to_json
+  end
+
   private
   def user_params
     params.require(:user).permit(
@@ -36,5 +45,9 @@ class UsersController < ApplicationController
       :password,
       :password_confirmation
     )
+  end
+
+  def force_json
+    request.format = :json
   end
 end
