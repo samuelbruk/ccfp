@@ -16,7 +16,9 @@
   </div>
 </div>
 <div class="index-boards">
-  <h5 class="index-board-heading">Boards in collaboration</h5>
+  <% if !@collaborations.empty? %>
+    <h5 class="index-board-heading">Boards in collaboration</h5>
+  <% end %>
   <% @collaborations.each do |collab| %>
     <div class="board col-md-3 col-sm-4 col-xs-12">
       <div class="board-wrapper">
