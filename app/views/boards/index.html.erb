@@ -1,4 +1,5 @@
 <div class="index-boards">
+  <h5 class="index-board-heading">Your boards</h5>
   <% @boards.each do |board| %>
     <div class="board col-md-3 col-sm-4 col-xs-12">
       <div class="board-wrapper">
@@ -13,4 +14,16 @@
       <%= link_to "Add Board", new_board_path, remote: true, class: "new-link" %>
     </div>
   </div>
+</div>
+<div class="index-boards">
+  <h5 class="index-board-heading">Boards in collaboration</h5>
+  <% @collaborations.each do |collab| %>
+    <div class="board col-md-3 col-sm-4 col-xs-12">
+      <div class="board-wrapper">
+        <!-- <span class="board-name"> -->
+          <%= link_to collab.board.name, board_path(collab.board), class: "board-link"  %>
+        <!-- </span> -->
+      </div>
+    </div>
+  <% end %>
 </div>
