@@ -13,11 +13,11 @@
     <div class="users-search">
       <input name="connection_id" placeholder="Search by name/email" class="users-search-auto" data-board-id=<%= @board.id %>>
     </div>
+    <div class="collaborator creator-name">
+      Board created by: <br>
+      <%= @board.user.full_name %>
+    </div>
     <div class="collaborators-list">
-      <div class="collaborator creator-name">
-        Board created by: <br>
-        <%= @board.user.full_name %>
-      </div>
       <% @collaborations.each do |collaboration| %>
         <div class="collaborator">
           <span class="glyphicon glyphicon-remove" data-relationship-id=<%= collaboration.id %>></span>
