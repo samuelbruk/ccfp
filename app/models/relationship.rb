@@ -9,6 +9,8 @@ class Relationship < ApplicationRecord
 
   validate :maintain_uniqueness
 
+  default_scope { order(created_at: :desc) }
+
   def maintain_uniqueness
     match = Relationship.find_by(user_id: self.user_id, connection_id: self.connection_id, board_id: self.board_id)
     if !!match

@@ -28,6 +28,7 @@ $(function() {
     list: {
       onChooseEvent: function() {
         var connection_id = $input.getSelectedItemData().id;
+        var connection_full_name = $input.getSelectedItemData().full_name;
         var connection_email = $input.getSelectedItemData().email;
         $.ajax({
           type: 'POST',
@@ -40,7 +41,7 @@ $(function() {
         .done(function(message) {
           // add a flash message to inform if user is added
           console.log(message.message);
-          $collaborators.append(`<div>${connection_email}</div>`);
+          $collaborators.prepend(`<div class="collaborator">${connection_full_name}</div>`).hide().fadeIn(700);
           $input.val('');
         });
 

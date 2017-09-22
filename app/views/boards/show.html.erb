@@ -14,6 +14,11 @@
       <input name="connection_id" class="users-search-auto" data-board-id=<%= @board.id %>>
     </div>
     <div class="collaborators-list">
+      <% @collaborations.each do |collaboration| %>
+        <div class="collaborator">
+          <%= collaboration.connection.full_name %>
+        </div>
+      <% end %>
     </div>
   </div>
   <% @lists.each do |list| %>

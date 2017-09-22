@@ -118,6 +118,15 @@ a {
 }
 
 .collaborators-list {
+  padding-top: 5px;
+}
+
+.collaborator {
+  margin-top: 5px;
+  padding: 5px 3px;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 2px;
 }
 
 .show-boards .list {
