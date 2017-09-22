@@ -2,7 +2,8 @@ class BoardsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_board, only: [:show, :edit, :update, :destroy]
   def index
-    @boards = current_user.boards.order(created_at: :desc)
+    @boards = current_user.boards
+    @collaborations = Relationship.where(connection: current_user)
   end
 
   def show
@@ -10,7 +11,7 @@ class BoardsController < ApplicationController
     @list = List.new
     @card = Card.new
     # @relationship = Relationship
-    @collaborations = Relationship.where(user_id: current_user, board_id: @board)
+    @collaborations = Relationship.where(board: @board)
   end
 
   def new

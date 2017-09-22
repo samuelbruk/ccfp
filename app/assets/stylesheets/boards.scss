@@ -15,6 +15,14 @@ a {
  margin-top: 100px;
 }
 
+h5.index-board-heading {
+  width: 100%;
+  margin-left: 14px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #545454;
+}
+
 .index-boards .board {
   //max-width: 200px;
   //margin-right: 10px;
@@ -119,6 +127,10 @@ a {
 
 .collaborators-list {
   padding-top: 5px;
+}
+
+.collaborator.creator-name {
+    background-color: #eeeeee;
 }
 
 .collaborator {
