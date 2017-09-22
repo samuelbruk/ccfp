@@ -89,7 +89,6 @@ a {
   min-height: 790px;
   font-family: "Ubuntu", sans-serif;
   font-size: 15px;
-  display: none;
 }
 
 .collaborators-title {
@@ -102,6 +101,32 @@ a {
   font-size: 17px;
   display: inline-block;
   float: right;
+}
+
+// .collaborators .users-search form {
+//   overflow: hidden;
+//   display: block;
+//   clear: both;
+//   min-height: 500px;
+//   position: absolute;
+// }
+
+.collaborators .users-search input {
+    width: 188px;
+    border-radius: 2px;
+    border: 1px solid grey;
+}
+
+.collaborators-list {
+  padding-top: 5px;
+}
+
+.collaborator {
+  margin-top: 5px;
+  padding: 5px 3px;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 2px;
 }
 
 .show-boards .list {

@@ -9,6 +9,8 @@ class BoardsController < ApplicationController
     @lists = @board.lists.order(created_at: :asc)
     @list = List.new
     @card = Card.new
+    # @relationship = Relationship
+    @collaborations = Relationship.where(user_id: current_user, board_id: @board)
   end
 
   def new

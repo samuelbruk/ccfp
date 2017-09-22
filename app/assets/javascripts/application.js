@@ -14,6 +14,6 @@
 // require vendor/selectize.min
 //= require jquery_ujs
 //= require bootstrap
-//= require jquery-ui/widgets/datepicker
+//= require jquery-ui
 //= require zebra-datepicker/core
 //= require_tree .
