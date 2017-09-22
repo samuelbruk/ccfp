@@ -16,6 +16,22 @@ $(function() {
   //     })
   //   }
   // })
+  $('.collaborators-list').on('click', event => {
+    // if(event.target)
+    const {target} = event;
+
+    if($(target).hasClass('glyphicon-remove')) {
+      console.log($(target).data('relationship-id'))
+      const relationship_id = $(target).data('relationship-id')
+      $.ajax({
+        type: 'DELETE',
+        url: `/relationships/${relationship_id}`
+      })
+      .done(function(message) {
+        $(target).parent().fadeOut(400);
+      });
+    }
+  });
 
   $input = $('.users-search-auto');
   $collaborators = $('.collaborators-list');
@@ -40,8 +56,8 @@ $(function() {
         })
         .done(function(message) {
           // add a flash message to inform if user is added
-          console.log(message.message);
-          $collaborators.prepend(`<div class="collaborator">${connection_full_name}</div>`).hide().fadeIn(700);
+          console.log(message);
+          $collaborators.prepend(`<div class="collaborator"><span data-relationship-id=${message.relationship_id} class="glyphicon glyphicon-remove"></span>${connection_full_name}</div>`).hide().fadeIn(700);
           $input.val('');
         });
 
