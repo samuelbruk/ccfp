@@ -2,26 +2,10 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 $(function() {
-  // $('.users-search form input').autocomplete({
-  //   source: function( request, response ) {
-  //     $.ajax({
-  //       url: `../users/search`,
-  //       dataType: "json",
-  //       data: {
-  //         term: request.term
-  //       },
-  //       success: function( data ) {
-  //         response( data );
-  //       }
-  //     })
-  //   }
-  // })
   $('.collaborators-list').on('click', event => {
-    // if(event.target)
     const {target} = event;
 
     if($(target).hasClass('glyphicon-remove')) {
-      console.log($(target).data('relationship-id'))
       const relationship_id = $(target).data('relationship-id')
       $.ajax({
         type: 'DELETE',
@@ -55,17 +39,12 @@ $(function() {
           }
         })
         .done(function(message) {
-          // add a flash message to inform if user is added
-          console.log(message);
+          // add a flash message to inform if user is added TODO
           $collaborators.prepend(`<div class="collaborator"><span data-relationship-id=${message.relationship_id} class="glyphicon glyphicon-remove"></span>${connection_full_name}</div>`).hide().fadeIn(700);
           $input.val('');
         });
-
-
-
       }
     }
   };
-
   $input.easyAutocomplete(options)
 })
