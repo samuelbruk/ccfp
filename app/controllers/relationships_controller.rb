@@ -1,4 +1,5 @@
 class RelationshipsController < ApplicationController
+  before_action :find_relationship, only: :destroy
 
   def create
     # we need to check if the user actually owns the board first TODO
@@ -12,10 +13,23 @@ class RelationshipsController < ApplicationController
     )
     # puts "Just added #{user_id}, #{connection_id} and #{board_id}"
     if relationship.save
-      render json: {message: 'Collaborator added'}
+      render json: {relationship_id: relationship.id, message: 'Collaborator added'}
     else
-      render json: {message: 'Something went wrong'}
+      render json: {relationship_id: '', message: 'Something went wrong'}
     end
   end
 
+  def destroy
+    # first we need to check if the user owns the relationship TODO
+    if @relationship.destroy
+      render json: {message: 'Relationship deleted'}
+    else
+      render json: {message: 'Something went wrong when deleting'}
+    end
+  end
+
+  private
+  def find_relationship
+    @relationship = Relationship.find(params[:id])
+  end
 end

@@ -129,6 +129,19 @@ a {
   border-radius: 2px;
 }
 
+.collaborator .glyphicon {
+    float: right;
+    padding: 3px;
+    margin-left: 5px;
+    border-radius: 10px;
+}
+
+.collaborator .glyphicon:hover {
+  cursor: pointer;
+  background-color: lightgray;
+  color: #a94442;
+}
+
 .show-boards .list {
   width: 275px;
   background-color: lavender;
